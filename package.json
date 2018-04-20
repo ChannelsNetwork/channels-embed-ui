@@ -1,0 +1,27 @@
+{
+  "name": "channels-embed-ui",
+  "version": "1.0.0",
+  "description": "Channels UI to embed in web pages",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChannelsNetwork/channels-embed-ui.git"
+  },
+  "author": "HivePoint, Inc.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChannelsNetwork/channels-embed-ui/issues"
+  },
+  "homepage": "https://github.com/ChannelsNetwork/channels-embed-ui#readme",
+  "devDependencies": {
+    "tslint": "^5.9.1",
+    "typescript": "^2.8.3"
+  },
+  "dependencies": {
+    "lit-component": "github:pshihn/lit-component"
+  }
+}
