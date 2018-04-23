@@ -1,29 +1,25 @@
 {
   "compilerOptions": {
-    "module": "es2015",
     "target": "es2017",
+    "module": "es2015",
     "lib": [
       "es2017",
       "dom"
     ],
-    "noImplicitAny": true,
     "declaration": true,
-    "sourceMap": true,
-    "outDir": "dist",
+    "outDir": "./bin",
     "baseUrl": ".",
     "strict": true,
+    "moduleResolution": "node",
+    "noImplicitAny": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "paths": {
-      "*": [
-        "node_modules/*"
-      ]
-    }
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   },
   "include": [
     "src/**/*.ts"
-  ],
-  "exclude": []
+  ]
 }
