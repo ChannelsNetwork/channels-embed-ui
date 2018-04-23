@@ -2266,7 +2266,7 @@ var channels = (function (exports) {
         }
     };
     ChannelsEmbedPanel = __decorate$2([
-        element('ch-emebed-panel')
+        element('ch-embed-panel')
     ], ChannelsEmbedPanel);
 
     var __decorate$3 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
@@ -2292,24 +2292,24 @@ var channels = (function (exports) {
           right: 0;
         }
       
-        ch-emebed-panel {
+        ch-embed-panel {
           position: fixed;
           z-index: 101;
           top: 0;
           right: 0;
           left: 0;
           bottom: 0;
-          transition: transform 0.58s ease-out;
+          transition: transform 0.5s ease-out;
           transform: translate3d(100%, 0, 0);
           will-change: transform;
         }
       
-        ch-emebed-panel.visible {
+        ch-embed-panel.visible {
           transform: translate3d(0, 0, 0);
         }
       </style>
       <ch-tab on-open-tab="onOpenTab"></ch-tab>
-      <ch-emebed-panel id="panel" on-close-tab="onCloseTab"></ch-emebed-panel>
+      <ch-embed-panel id="panel" on-close-tab="onCloseTab"></ch-embed-panel>
     `;
         }
         onOpenTab() {
