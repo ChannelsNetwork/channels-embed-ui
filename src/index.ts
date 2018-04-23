@@ -10,3 +10,11 @@ export function initialize() {
   document.body.appendChild(containerNode);
   _initialized = true;
 }
+
+(() => {
+  if ((document && document.readyState) === 'complete') {
+    initialize();
+    return;
+  }
+  window.addEventListener('load', () => { initialize(); });
+})();
