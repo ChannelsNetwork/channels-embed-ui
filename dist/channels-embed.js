@@ -2289,7 +2289,6 @@ var channels = (function (exports) {
         }
         const containerNode = new ChannelsEmbedContainer();
         document.body.appendChild(containerNode);
-        console.log("Initialize!");
         _initialized = true;
     }
 
