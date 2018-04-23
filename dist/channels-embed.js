@@ -2111,7 +2111,7 @@ var channels = (function (exports) {
         :host {
           background: #213034;
           height: 50px;
-          padding: 0 0 0 16px;
+          padding: 0;
           box-sizing: border-box;
           color: white;
           font-family: sans-serif;
@@ -2119,6 +2119,7 @@ var channels = (function (exports) {
           letter-spacing: 0.02em;
           line-height: 1.5;
           -webkit-font-smoothing: antialiased;
+          font-size: 18px;
         }
       
         :host,
@@ -2132,6 +2133,15 @@ var channels = (function (exports) {
           -ms-flex-align: center;
           -webkit-align-items: center;
           align-items: center;
+        }
+      
+        .balancePanel {
+          height: 50px;
+          padding: 0 16px;
+          background: #ffeb3b;
+          color: #000;
+          cursor: pointer;
+          margin-left: 10px;
         }
       
         a,
@@ -2158,15 +2168,32 @@ var channels = (function (exports) {
           flex-basis: 0.000000001px;
         }
       
+        #close {
+          border: 2px solid;
+          border-radius: 50%;
+          height: 30px;
+          width: 30px;
+          margin: 0 16px 0 10px;
+          opacity: 0.8;
+          cursor: pointer;
+        }
+      
+        #close:hover {
+          opacity: 1;
+        }
+      
         @media (max-width: 600px) {
-          :host {
-            padding: 0 0 0 8px;
-          }
           .logo {
             height: 26px;
           }
+          .balancePanel {
+            margin-left: 2px;
+            padding: 0 10px;
+            font-size: 16px;
+          }
         }
       </style>
+      <img id="close" src="./images/close.png" on-click="close">
       <a href="https://channels.cc" target="_blank">
         <img class="logo" alt="channels" src="https://channels.cc/s/images/logos/logo_full_40.png">
       </a>
@@ -2177,6 +2204,9 @@ var channels = (function (exports) {
         </div>
       </a>
     `;
+        }
+        close() {
+            this.fireEvent('close-tab');
         }
     };
     __decorate$1([
@@ -2205,6 +2235,7 @@ var channels = (function (exports) {
           letter-spacing: 0.02em;
           line-height: 1.5;
           -webkit-font-smoothing: antialiased;
+          font-size: 18px;
         }
       
         .header {
@@ -2213,15 +2244,22 @@ var channels = (function (exports) {
           padding: 20px 16px;
         }
       
+        .content {
+          max-width: 912px;
+        }
+      
         @media (max-width: 600px) {
           .header {
             padding: 16px 8px;
+          }
+          :host {
+            font-size: 16px;
           }
         }
       </style>
       <ch-bar></ch-bar>
       <div class="header">
-        <div>Channels is a micropayment system for content creators. Readers pay publishers using their Channels credit, which they
+        <div class="content">Channels is a micropayment system for content creators. Readers pay publishers using their Channels credit, which they
           can earn by watching sponsered content.</div>
       </div>
     `;
@@ -2261,7 +2299,7 @@ var channels = (function (exports) {
           right: 0;
           left: 0;
           bottom: 0;
-          transition: transform 0.6s ease-out;
+          transition: transform 0.58s ease-out;
           transform: translate3d(100%, 0, 0);
           will-change: transform;
         }
@@ -2271,11 +2309,14 @@ var channels = (function (exports) {
         }
       </style>
       <ch-tab on-open-tab="onOpenTab"></ch-tab>
-      <ch-emebed-panel id="panel"></ch-emebed-panel>
+      <ch-emebed-panel id="panel" on-close-tab="onCloseTab"></ch-emebed-panel>
     `;
         }
         onOpenTab() {
             this.$('panel').classList.add('visible');
+        }
+        onCloseTab() {
+            this.$('panel').classList.remove('visible');
         }
     };
     ChannelsEmbedContainer = __decorate$3([

@@ -16,6 +16,7 @@ export class ChannelsEmbedPanel extends LitElement {
           letter-spacing: 0.02em;
           line-height: 1.5;
           -webkit-font-smoothing: antialiased;
+          font-size: 18px;
         }
       
         .header {
@@ -24,15 +25,22 @@ export class ChannelsEmbedPanel extends LitElement {
           padding: 20px 16px;
         }
       
+        .content {
+          max-width: 912px;
+        }
+      
         @media (max-width: 600px) {
           .header {
             padding: 16px 8px;
+          }
+          :host {
+            font-size: 16px;
           }
         }
       </style>
       <ch-bar></ch-bar>
       <div class="header">
-        <div>Channels is a micropayment system for content creators. Readers pay publishers using their Channels credit, which they
+        <div class="content">Channels is a micropayment system for content creators. Readers pay publishers using their Channels credit, which they
           can earn by watching sponsered content.</div>
       </div>
     `;

@@ -28,7 +28,7 @@ export class ChannelsEmbedContainer extends LitElement {
           right: 0;
           left: 0;
           bottom: 0;
-          transition: transform 0.6s ease-out;
+          transition: transform 0.58s ease-out;
           transform: translate3d(100%, 0, 0);
           will-change: transform;
         }
@@ -38,11 +38,14 @@ export class ChannelsEmbedContainer extends LitElement {
         }
       </style>
       <ch-tab on-open-tab="onOpenTab"></ch-tab>
-      <ch-emebed-panel id="panel"></ch-emebed-panel>
+      <ch-emebed-panel id="panel" on-close-tab="onCloseTab"></ch-emebed-panel>
     `;
   }
 
   onOpenTab() {
     this.$('panel').classList.add('visible');
+  }
+  onCloseTab() {
+    this.$('panel').classList.remove('visible');
   }
 }

@@ -11,7 +11,7 @@ export class ChannelsBar extends LitElement {
         :host {
           background: #213034;
           height: 50px;
-          padding: 0 0 0 16px;
+          padding: 0;
           box-sizing: border-box;
           color: white;
           font-family: sans-serif;
@@ -19,6 +19,7 @@ export class ChannelsBar extends LitElement {
           letter-spacing: 0.02em;
           line-height: 1.5;
           -webkit-font-smoothing: antialiased;
+          font-size: 18px;
         }
       
         :host,
@@ -32,6 +33,15 @@ export class ChannelsBar extends LitElement {
           -ms-flex-align: center;
           -webkit-align-items: center;
           align-items: center;
+        }
+      
+        .balancePanel {
+          height: 50px;
+          padding: 0 16px;
+          background: #ffeb3b;
+          color: #000;
+          cursor: pointer;
+          margin-left: 10px;
         }
       
         a,
@@ -58,15 +68,32 @@ export class ChannelsBar extends LitElement {
           flex-basis: 0.000000001px;
         }
       
+        #close {
+          border: 2px solid;
+          border-radius: 50%;
+          height: 30px;
+          width: 30px;
+          margin: 0 16px 0 10px;
+          opacity: 0.8;
+          cursor: pointer;
+        }
+      
+        #close:hover {
+          opacity: 1;
+        }
+      
         @media (max-width: 600px) {
-          :host {
-            padding: 0 0 0 8px;
-          }
           .logo {
             height: 26px;
           }
+          .balancePanel {
+            margin-left: 2px;
+            padding: 0 10px;
+            font-size: 16px;
+          }
         }
       </style>
+      <img id="close" src="./images/close.png" on-click="close">
       <a href="https://channels.cc" target="_blank">
         <img class="logo" alt="channels" src="https://channels.cc/s/images/logos/logo_full_40.png">
       </a>
@@ -77,5 +104,9 @@ export class ChannelsBar extends LitElement {
         </div>
       </a>
     `;
+  }
+
+  close() {
+    this.fireEvent('close-tab')
   }
 }
