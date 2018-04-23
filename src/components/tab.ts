@@ -58,25 +58,31 @@ export class ChannelsTab extends LitElement {
           padding: 10px;
           margin-top: 10px;
           box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.4);
-          font-family: sans-serif;
-          font-weight: 300;
           font-size: 15px;
-          letter-spacing: 0.02em;
-          line-height: 1.3em;
           color: #fff;
           background: rgba(0, 0, 0, 0.85);
           cursor: initial;
           display: none;
+          font-family: sans-serif;
+          font-weight: 400;
+          letter-spacing: 0.02em;
+          line-height: 1.35;
+          -webkit-font-smoothing: antialiased;
         }
       </style>
       <div class="container">
-        <img class="logo" src="https://channels.cc/s/images/logos/logo_200.png">
-        <div class="balanceBar"></div>
+        <img class="logo" src="https://channels.cc/s/images/logos/logo_200.png" on-click="openTab">
+        <div class="balanceBar" on-click="openTab"></div>
         <div id="tip">
           Channels is a micropayment system for content creators. Readers pay publishers using their Channels credit, which they can
           earn by watching sponsered content.
         </div>
       </div>
     `;
+  }
+
+  openTab(event: Event) {
+    event.stopPropagation();
+    this.fireEvent('open-tab');
   }
 }

@@ -2052,26 +2052,31 @@ var channels = (function (exports) {
           padding: 10px;
           margin-top: 10px;
           box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.4);
-          font-family: sans-serif;
-          font-weight: 300;
           font-size: 15px;
-          letter-spacing: 0.02em;
-          line-height: 1.3em;
           color: #fff;
           background: rgba(0, 0, 0, 0.85);
           cursor: initial;
           display: none;
+          font-family: sans-serif;
+          font-weight: 400;
+          letter-spacing: 0.02em;
+          line-height: 1.35;
+          -webkit-font-smoothing: antialiased;
         }
       </style>
       <div class="container">
-        <img class="logo" src="https://channels.cc/s/images/logos/logo_200.png">
-        <div class="balanceBar"></div>
+        <img class="logo" src="https://channels.cc/s/images/logos/logo_200.png" on-click="openTab">
+        <div class="balanceBar" on-click="openTab"></div>
         <div id="tip">
           Channels is a micropayment system for content creators. Readers pay publishers using their Channels credit, which they can
           earn by watching sponsered content.
         </div>
       </div>
     `;
+        }
+        openTab(event) {
+            event.stopPropagation();
+            this.fireEvent('open-tab');
         }
     };
     __decorate([
@@ -2087,6 +2092,146 @@ var channels = (function (exports) {
     ], ChannelsTab);
 
     var __decorate$1 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+    };
+    var __metadata$1 = (undefined && undefined.__metadata) || function (k, v) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+    };
+    let ChannelsBar = class ChannelsBar extends LitElement {
+        constructor() {
+            super(...arguments);
+            this.balance = 'ℂ23.773';
+        }
+        template() {
+            return html `
+      <style>
+        :host {
+          background: #213034;
+          height: 50px;
+          padding: 0 0 0 16px;
+          box-sizing: border-box;
+          color: white;
+          font-family: sans-serif;
+          font-weight: 400;
+          letter-spacing: 0.02em;
+          line-height: 1.5;
+          -webkit-font-smoothing: antialiased;
+        }
+      
+        :host,
+        .balancePanel {
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          display: flex;
+          -ms-flex-direction: row;
+          -webkit-flex-direction: row;
+          flex-direction: row;
+          -ms-flex-align: center;
+          -webkit-align-items: center;
+          align-items: center;
+        }
+      
+        a,
+        a:hover,
+        a:visited {
+          text-align: center;
+          color: inherit;
+          text-decoration: none;
+          outline: none;
+          border: none;
+        }
+      
+        .logo {
+          display: block;
+          height: 36px;
+          width: auto;
+        }
+      
+        .flex {
+          -ms-flex: 1 1 0.000000001px;
+          -webkit-flex: 1;
+          flex: 1;
+          -webkit-flex-basis: 0.000000001px;
+          flex-basis: 0.000000001px;
+        }
+      
+        @media (max-width: 600px) {
+          :host {
+            padding: 0 0 0 8px;
+          }
+          .logo {
+            height: 26px;
+          }
+        }
+      </style>
+      <a href="https://channels.cc" target="_blank">
+        <img class="logo" alt="channels" src="https://channels.cc/s/images/logos/logo_full_40.png">
+      </a>
+      <div class="flex"></div>
+      <a href="https://channels.cc/balance" target="_blank">
+        <div class="balancePanel">
+          <span class="balanceLabel">${this.balance}</span>
+        </div>
+      </a>
+    `;
+        }
+    };
+    __decorate$1([
+        property(),
+        __metadata$1("design:type", String)
+    ], ChannelsBar.prototype, "balance", void 0);
+    ChannelsBar = __decorate$1([
+        element('ch-bar')
+    ], ChannelsBar);
+
+    var __decorate$2 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+    };
+    let ChannelsEmbedPanel = class ChannelsEmbedPanel extends LitElement {
+        template() {
+            return html `
+      <style>
+        :host {
+          display: block;
+          background: white;
+          font-family: sans-serif;
+          font-weight: 400;
+          letter-spacing: 0.02em;
+          line-height: 1.5;
+          -webkit-font-smoothing: antialiased;
+        }
+      
+        .header {
+          background: #293C41;
+          color: white;
+          padding: 20px 16px;
+        }
+      
+        @media (max-width: 600px) {
+          .header {
+            padding: 16px 8px;
+          }
+        }
+      </style>
+      <ch-bar></ch-bar>
+      <div class="header">
+        <div>Channels is a micropayment system for content creators. Readers pay publishers using their Channels credit, which they
+          can earn by watching sponsered content.</div>
+      </div>
+    `;
+        }
+    };
+    ChannelsEmbedPanel = __decorate$2([
+        element('ch-emebed-panel')
+    ], ChannelsEmbedPanel);
+
+    var __decorate$3 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
         else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
@@ -2108,12 +2253,32 @@ var channels = (function (exports) {
           top: 20px;
           right: 0;
         }
+      
+        ch-emebed-panel {
+          position: fixed;
+          z-index: 101;
+          top: 0;
+          right: 0;
+          left: 0;
+          bottom: 0;
+          transition: transform 0.6s ease-out;
+          transform: translate3d(100%, 0, 0);
+          will-change: transform;
+        }
+      
+        ch-emebed-panel.visible {
+          transform: translate3d(0, 0, 0);
+        }
       </style>
-      <ch-tab></ch-tab>
+      <ch-tab on-open-tab="onOpenTab"></ch-tab>
+      <ch-emebed-panel id="panel"></ch-emebed-panel>
     `;
         }
+        onOpenTab() {
+            this.$('panel').classList.add('visible');
+        }
     };
-    ChannelsEmbedContainer = __decorate$1([
+    ChannelsEmbedContainer = __decorate$3([
         element('ch-embed-container')
     ], ChannelsEmbedContainer);
 
