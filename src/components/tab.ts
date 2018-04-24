@@ -1,11 +1,8 @@
 import { LitElement, html, TemplateResult } from 'lit-component';
-import { element, property } from 'lit-component-descriptors';
+import { element } from 'lit-component-descriptors';
 
 @element('ch-tab')
 export class ChannelsTab extends LitElement {
-  @property() ad?: any;
-  @property() balanceLevel = 5;
-
   template(): TemplateResult {
     return html`
       <style>
@@ -69,10 +66,30 @@ export class ChannelsTab extends LitElement {
           line-height: 1.35;
           -webkit-font-smoothing: antialiased;
         }
+      
+        #adContainer {
+          height: 60px;
+          width: 0px;
+          overflow: hidden;
+          transition: width 0.4s ease;
+        }
+      
+        #adPanel {
+          width: 70px;
+          height: 60px;
+          overflow: hidden;
+          background-color: #f0f0f0;
+          background-size: cover;
+          background-origin: border-box;
+          background-position: 50% 50%;
+        }
       </style>
       <div class="container">
         <img class="logo" src="https://channels.cc/s/images/logos/logo_200.png" on-click="openTab">
         <div class="balanceBar" on-click="openTab"></div>
+        <div id="adContainer">
+          <div id="adPanel"></div>
+        </div>
         <div id="tip">
           Channels is a micropayment system for content creators. Readers pay publishers using their Channels credit, which they can
           earn by watching sponsered content.
@@ -84,5 +101,18 @@ export class ChannelsTab extends LitElement {
   openTab(event: Event) {
     event.stopPropagation();
     this.fireEvent('open-tab');
+  }
+
+  connectedCallback(): Promise<void> {
+    return super.connectedCallback().then(() => {
+      const showAd = Math.random() > 0.5;
+      if (showAd) {
+        const ad = Math.round(Math.random()) ? 'images/ad1.jpg' : 'images/ad2.jpg';
+        this.$('adPanel').style.backgroundImage = `url("${ad}")`;
+        setTimeout(() => {
+          this.$('adContainer').style.width = '70px';
+        }, 1000);
+      }
+    });
   }
 }
