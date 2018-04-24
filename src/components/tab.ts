@@ -105,9 +105,9 @@ export class ChannelsTab extends LitElement {
 
   connectedCallback(): Promise<void> {
     return super.connectedCallback().then(() => {
-      const showAd = Math.random() > 0.5;
+      const showAd = Math.random() > 0.2;
       if (showAd) {
-        const ad = Math.round(Math.random()) ? 'images/ad1.jpg' : 'images/ad2.jpg';
+        const ad = (Math.random() > 0.5) ? 'images/ad1.jpg' : 'images/ad2.jpg';
         this.$('adPanel').style.backgroundImage = `url("${ad}")`;
         setTimeout(() => {
           this.$('adContainer').style.width = '70px';
