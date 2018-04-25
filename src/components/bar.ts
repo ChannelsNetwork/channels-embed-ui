@@ -1,5 +1,5 @@
 import { LitElement, html, TemplateResult } from 'lit-component';
-import { element, property } from 'lit-component-descriptors';
+import { element, property } from 'lit-component-decorators';
 
 @element('ch-bar')
 export class ChannelsBar extends LitElement {

@@ -1,5 +1,5 @@
 import { LitElement, html, TemplateResult } from 'lit-component';
-import { element } from 'lit-component-descriptors';
+import { element } from 'lit-component-decorators';
 import './tab';
 import './panel';
 

@@ -20,7 +20,7 @@
   "homepage": "https://github.com/ChannelsNetwork/channels-embed-ui#readme",
   "dependencies": {
     "lit-component": "github:lit-component/lit-component",
-    "lit-component-descriptors": "github:lit-component/lit-component-descriptors"
+    "lit-component-decorators": "github:lit-component/lit-component-decorators"
   },
   "devDependencies": {
     "rollup": "^0.58.2",
